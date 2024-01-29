@@ -1,3 +1,5 @@
+You can go to this page for the [dof calculator](https://dof-calculator-55d54.web.app/)
+
 # An "estimate in image" dof calculator
 ## The basics
 
