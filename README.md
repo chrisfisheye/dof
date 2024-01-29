@@ -3,25 +3,21 @@
 
 This is a new dof calculator which gives the **same results** as an usual dof calculator. The main difference is that instead of estimating distances on the scene, it requires that you simply estimate directly **<u>in the image</u>**.
 
-The method works in use cases where you have a **reference plane**, like a street, floor of a building, flat landscape, river... The focus plane, and the near/far limits of the dof must have positions in this plane  typically represented as horizontal lines...  You must also be able to  easily estimate the altitude of the camera above this plane.
+The method works in use cases where you have a **reference plane**, like a street, floor of a building, flat landscape, river.. The focus plane, and the near/far limits of the dof will have positions in this plane typically represented as horizontal lines.  You must also be able to  easily estimate the altitude of the camera above this plane.
 
 ### The simple formula in the image dimension
-
-
 
 $$
 \Huge f_\\# = f \times \frac{k}{h} \times  r
 $$
 * f is the focal length (real not equivalent)
-*  r is the portion of the total image (in the height dimension) in terms of ratio (1/3, ..) which represents the area between the focus line in the reference plane and the dof limit still in this reference place.
+*  r is the portion of the total image (in the height dimension) in terms of ratio (1/3, ..) which represents the area between the focus line and the dof limit.
 *  k is a number of pixels, representing the resolutions that you have at your limits. k =800 in landscape mode or 1200 in portrait mode gives results 100% consistent with an usual dof calculator (similar to Coc = 0.03mm for FF)
-*  h is the height of the camera above the reference plane
+* h is the height of the camera above the reference plane
 
 > [!IMPORTANT]
 >
 > This formula is 100% independent of sensor size !!!
-
-
 
 ### assumptions
 A few constraints to see if the method can apply:
@@ -33,13 +29,13 @@ You must have a reference where you will have the different positions of these d
 - focus plane
 - far dof limit plane
 
-This plane works with  straight plane, but this is used as an estimate method so you have some latitude. It does not necessarily have to be at the same altitude, it can have a constant slope.  The positions of these planes along the  plane of reference is displayed with horizontal lines.
+This plane works with  straight plane, but this is used as an estimate method so you have some latitude. It does not necessarily have to be at the same altitude, it can have a constant slope. The positions of these planes along the  plane of reference is displayed with horizontal lines.
 
 2. <u>A known altitude above this plane</u>
 
 You must be able to estimate the altitude above the reference plane taking into account the tilt if any:
 
-<img src="tilt.jpg" alt="tilt" width="400"/>
+<img src="https://github.com/chrisfisheye/dof/assets/156583869/4a612aaf-9094-4152-8ba8-0a4a9208c695" alt="tilt" width="400"/>
 
 *A few remarks*
 
@@ -47,7 +43,7 @@ You must be able to estimate the altitude above the reference plane taking into 
 * in many use cases, the tilt is 98% neglectible. In landscape photography, streets, inside buildings, the tilt is often minor.
 * If this is not the case, you can either estimate directly the distance h (see the schema above) or apply an adjustment with the formula:
 $$
-\frac {1}{sin(\alpha)}
+1/sin(\alpha)
 $$
 
 3. <u>Do not focus and recompose</u>
@@ -66,7 +62,7 @@ With the dof calculator, you select both limits and it automatically draw a hori
 ### Step 2: compute f<sub>#</sub>
 
 The dof calculator computes f<sub>#</sub> based on the formula.  
-It also gives the f# taking into account diffraction.
+It also gives the f<sub>#</sub> taking into account diffraction.
 
 
 
@@ -100,10 +96,14 @@ mirrorless displays the camera level with the tilt up/down, it can help to adjus
 ## diffraction taken into account
 
 You have also the optimal f<sub>#</sub> (called f# diffraction) to use for maximum sharpness at the near/far limits.
-This is calculated using this equation
+This is calculated using this equation:
+
 $$
-\math \Large n = 134 \sqrt{\frac{rf}{h}}
+\Large f_\\# = 134 \sqrt{\frac{rf}{h}}
 $$
+
+This will give a good resolution at these limits but will often reduce the resolution near the focus plane. Using the first f<sub>#</sub> as a minimum value and the diffraction f<sub>#</sub>  as the maximum value can be of a great help for the photographer.
+
 
 This will give a good resolution at these limits but will often reduce the resolution near the focus plane. Using the first f<sub>#</sub> as a minimum value and the diffraction f<sub>#</sub>  as the maximum value can be of a great help for the photographer.
 
